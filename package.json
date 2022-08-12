@@ -5,18 +5,18 @@
   "main": "index.js",
   "scripts": {
     "commit": "cz",
+    "lint": "pnpm lint:ts && pnpm lint:code",
     "lint:ts": "eslint --fix",
     "lint:code": "prettier --ignore-path .gitignore --check --write src/**/*.ts"
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged",
-      "commit-msg": "commitlint -e $GIT_PARAMS"
+      "pre-commit": "lint-staged"
     }
   },
   "lint-staged": {
     "src/**/*.{tsx,ts}": [
-      "lint:code && lint:ts",
+      "lint",
       "git add"
     ]
   },
@@ -34,10 +34,8 @@
     "@typescript-eslint/eslint-plugin": "^5.33.0",
     "@typescript-eslint/parser": "^5.33.0",
     "commitizen": "^4.2.5",
-    "commitlint": "^17.0.3",
     "cz-conventional-changelog": "^3.3.0",
     "eslint": "^7.32.0 || ^8.2.0",
-    "eslint-config-airbnb": "^19.0.4",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-import": "^2.25.3",
     "eslint-plugin-jsx-a11y": "^6.5.1",
