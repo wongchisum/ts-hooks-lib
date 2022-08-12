@@ -1,1 +1,1 @@
-export { default as usePartialState } from './hooks/usePartialState'
+export { default as usePartialState } from './hooks/usePartialState';
