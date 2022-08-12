@@ -1,0 +1,51 @@
+{
+  "name": "ts-hooks-lib",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "commit": "cz",
+    "lint": "pnpm lint:ts && pnpm lint:code",
+    "lint:ts": "eslint --fix",
+    "lint:code": "prettier --ignore-path .gitignore --check --write src/**/*.ts"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "src/**/*.{tsx,ts}": [
+      "lint",
+      "git add"
+    ]
+  },
+  "config": {
+    "commitizen": {
+      "path": "cz-conventional-changelog"
+    }
+  },
+  "keywords": [
+    "react hooks",
+    "react"
+  ],
+  "author": "",
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.33.0",
+    "@typescript-eslint/parser": "^5.33.0",
+    "commitizen": "^4.2.5",
+    "cz-conventional-changelog": "^3.3.0",
+    "eslint": "^7.32.0 || ^8.2.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-import": "^2.25.3",
+    "eslint-plugin-jsx-a11y": "^6.5.1",
+    "eslint-plugin-react": "^7.28.0",
+    "eslint-plugin-react-hooks": "^4.3.0",
+    "husky": "^8.0.1",
+    "lint-staged": "^13.0.3",
+    "prettier": "^2.7.1",
+    "typedoc": "^0.23.10",
+    "typescript": "^4.7.4",
+    "vite": "^3.0.5"
+  }
+}
