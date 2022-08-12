@@ -1,19 +1,19 @@
 /*
  * @Author: wangzhisen
- * @Date: 2022-08-12 16:55:45
- * @Last Modified by: wangzhisen
- * @Last Modified time: 2022-08-12 17:04:40
+ * @Date: 2022-08-12 18:35:29
+ * @Last Modified by:   wangzhisen
+ * @Last Modified time: 2022-08-12 18:35:29
  */
+
 import { useState } from 'react';
-type ValueType<T> = () => T | T;
 
 export default function usePartialState<
   T extends Record<string | number, unknown>
->(initValue: ValueType<T>) {
-  const [state, setState] = useState(initValue?.());
+>(initValue: T): [T, (value: Partial<T>) => void] {
+  const [state, setState] = useState(initValue);
 
   function handleChange(partialValue: Partial<T>) {
-    setState(currentState => ({ ...currentState, partialValue }));
+    setState(currentState => ({ ...currentState, ...partialValue }));
   }
 
   return [state, handleChange];
